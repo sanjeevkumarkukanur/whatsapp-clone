@@ -1,9 +1,11 @@
 import '../styles/globals.css'
 import { useAuthState  } from "react-firebase-hooks/auth";
 import {  db, auth } from '../firebase';
+import Login from "./Login";
 function MyApp({ Component, pageProps }) {
 
   const [user] = useAuthState(auth);
+  if(!user) return <Login />
   return <Component {...pageProps} />
 }
 
